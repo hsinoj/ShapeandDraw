@@ -1,0 +1,10 @@
+This application is to use what you have learned to produce a fairly complex program. It involves version control, unit testing, the use of design patterns and automatic documentation generation. The idea of the program is to produce a simplified environment for teaching simple programming concepts. You are to create a simple programming language that has the basics of sequence, selection and iteration and allows a student programmer to explore them using graphics.
+
+FOR BASIC COMMAND
+DrawTo x,y 
+Circle <radius>
+Rectangle <width>, <height>
+Triangle <base>, <adj>, <hyp>
+
+
+THANK YOU FOR USING APPLICATION
