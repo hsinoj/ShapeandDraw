@@ -140,13 +140,14 @@ namespace ShapeInterface
                     {
                         par[0] = Convert.ToInt32(hashtable[value[1]]);
                         par[1] = Convert.ToInt32(hashtable[value[2]]);
-                       
+                        MessageBox.Show("the x axis"+par[0]);
+                        MessageBox.Show("the y axis"+par[1]);
                     }
                     catch 
                     {
                         par[0] = Convert.ToInt32(value[1]);
                         par[1] = Convert.ToInt32(value[2]);
-                       
+                        MessageBox.Show("first");
                     }
                     try
                     {
@@ -170,26 +171,26 @@ namespace ShapeInterface
                         cab[1] = Convert.ToInt32(value[2]);
                     }
                 }
-                else if (value[0].Equals("int"))
+                else if (value[0].Equals("var") == true)
                 {
-                    if (value[2].Equals("=")&&value[4].Equals(";"))
+                    if (value[2].Equals("=") == true && value[4].Equals(";") == true)
                     {
-                        int start = line[i].IndexOf("var") + "var".Length;
-                        int final = line[i].LastIndexOf("=");
+                        int From = line[i].IndexOf("var") + "var".Length;
+                        int To = line[i].LastIndexOf("=");
 
-                        String store = line[i].Substring(start, final - start).Replace(" ", String.Empty);
+                        String res = line[i].Substring(From, To - From).Replace(" ", String.Empty);
 
-                        int begin = line[i].IndexOf("=") + "=".Length;
-                        int end = line[i].LastIndexOf(";");
+                        int From1 = line[i].IndexOf("=") + "=".Length;
+                        int To1 = line[i].LastIndexOf(";");
 
-                        int store1 = Int32.Parse(line[i].Substring(begin, end - begin).Replace(" ", String.Empty));
+                        int res1 = Int32.Parse(line[i].Substring(From1, To1 - From1).Replace(" ", String.Empty));
                         try
                         {
-                            hashtable.Add(store, store1);
+                            hashtable.Add(res, res1);
                         }
                         catch (Exception x)
                         {
-                            hashtable[store] = store1;
+                            hashtable[res] = res1;
                         }
 
 
@@ -197,6 +198,13 @@ namespace ShapeInterface
                     MessageBox.Show("" + hashtable);
 
                 }
+                    
+
+
+
+
+
+
                     if (value[0].Equals("Rectangle", StringComparison.OrdinalIgnoreCase))//checking the command
                     {
                         abstractShapes ab = factory.getShape("Rectangle");
@@ -247,7 +255,7 @@ namespace ShapeInterface
                     }
 
 
-                
+                }
             }
         }
     
