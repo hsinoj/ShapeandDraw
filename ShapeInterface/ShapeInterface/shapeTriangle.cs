@@ -27,7 +27,7 @@ namespace ShapeInterface
             p[1] = new Point(p3, p4);
             p[2] = new Point(p5, p6);
             g.FillPolygon(b,p);
-            g.DrawPolygon(pp, p);
+            g.DrawPolygon(pp,p);
 
         }
 

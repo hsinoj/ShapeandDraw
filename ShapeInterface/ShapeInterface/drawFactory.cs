@@ -28,6 +28,10 @@ namespace ShapeInterface
             {
                 return new shapeTriangle();
             }
+            else if (drawType.Equals("POLYGON", StringComparison.OrdinalIgnoreCase))
+            {
+                return new shapePolygon();
+            }
             else
             {
                
