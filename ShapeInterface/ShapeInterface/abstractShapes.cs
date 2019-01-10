@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace ShapeInterface
 {
  
-    abstract class abstractShapes : Shapes
+   public abstract class abstractShapes 
     {
        
         public abstract void drawShape(Graphics g);

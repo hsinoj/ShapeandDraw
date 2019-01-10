@@ -8,18 +8,38 @@ namespace ShapeInterface
 {
     class drawFactory
     {
-        String[] value;
-        String[] line;
-        int par1, par2;
-        int length, breadth;
-        int radius, radii;
+        
+     
         public abstractShapes getShape(String drawType)
         {
+           drawType = drawType.Trim();
 
-            drawType = drawType.Trim();
-            
+            if (drawType.Equals("CIRCLE", StringComparison.OrdinalIgnoreCase))
+            {
+                return new shapeCircle();
 
             }
+            else if (drawType.Equals("RECTANGLE", StringComparison.OrdinalIgnoreCase))
+            {
+                return new shapeRectangle();
+
+            }
+            else if (drawType.Equals("TRIANGLE", StringComparison.OrdinalIgnoreCase))
+            {
+                return new shapeTriangle();
+            }
+            else
+            {
+               
+                    //if we get here then what has been passed in is unknown so throw an appropriate exception
+                    System.ArgumentException argEx = new System.ArgumentException("Factory error: " + drawType + " does not exist");
+                    throw argEx;
+                
+                
+            }
+
+
+
         }
     }
 }

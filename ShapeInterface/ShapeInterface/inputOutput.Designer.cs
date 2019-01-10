@@ -121,6 +121,7 @@
             this.edit.Size = new System.Drawing.Size(331, 424);
             this.edit.TabIndex = 5;
             this.edit.Text = "";
+            this.edit.TextChanged += new System.EventHandler(this.edit_TextChanged);
             // 
             // panel1
             // 
@@ -130,6 +131,7 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(463, 424);
             this.panel1.TabIndex = 6;
+            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
             // help
             // 

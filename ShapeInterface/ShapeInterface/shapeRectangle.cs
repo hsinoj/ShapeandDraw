@@ -15,13 +15,13 @@ namespace ShapeInterface
         int length;
         int breadth; 
 
-        public shapeRectangle(int x,int y,int length,int breadth)
+      /**  public  shapeRectangle(int x,int y,int length,int breadth)
         {
             this.x = x;
             this.y = y;
             this.length = length;
             this.breadth = breadth;
-        }
+        }**/
         public override void drawShape(Graphics g)
         {
            // throw new NotImplementedException();
@@ -36,7 +36,7 @@ namespace ShapeInterface
         {
             //  throw new NotImplementedException();
             x = list[0];
-            y=list[1];
+            y =  list[1];
             this.length = list[2];
             this.breadth = list[3];
         }

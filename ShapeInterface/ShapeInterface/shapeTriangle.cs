@@ -9,8 +9,7 @@ namespace ShapeInterface
 {
     class shapeTriangle : abstractShapes
     {
-        int bx;
-        int by;
+       
         int p1;
         int p2;
         int p3;

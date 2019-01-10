@@ -15,13 +15,7 @@ namespace ShapeInterface
         int radius1;
         int radius2;
 
-        public shapeCircle( int ax, int ay, int radius1, int radius2)
-        {
-            this.ax = ax;
-            this.ay = ay;
-            this.radius1 = radius1;
-            this.radius2 = radius2;
-        }
+       
 
         public override void drawShape(Graphics g)
         {

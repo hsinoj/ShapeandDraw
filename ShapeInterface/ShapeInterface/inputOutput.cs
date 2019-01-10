@@ -13,11 +13,14 @@ namespace ShapeInterface
 {
     public partial class inputOutput : Form
     {
-
+        String[] value;
+        String[] line;
         Form1 f1;
+        drawFactory factory = new drawFactory();
         public inputOutput(Form1 f1)
         {
             InitializeComponent();
+
             this.f1 = f1;
         }
 
@@ -27,6 +30,8 @@ namespace ShapeInterface
             run.FlatStyle = FlatStyle.Flat;
             run.FlatAppearance.BorderSize = 0;
             run.FlatAppearance.BorderColor = Color.FromArgb(0, 255, 255, 255); //transparent
+
+            panel1.Refresh();
         }
 
         private void button1_Click_1(object sender, EventArgs e)
@@ -97,12 +102,66 @@ namespace ShapeInterface
 
         private void help_Click(object sender, EventArgs e)
         {
-            
+
             var fileStream = new FileStream(@"E:\study\ShapeandDraw\help.txt", FileMode.Open, FileAccess.Read);
             using (var streamReader = new StreamReader(fileStream, Encoding.UTF8))
             {
                 edit.Text = streamReader.ReadToEnd();
             }
         }
+
+        private void edit_TextChanged(object sender, EventArgs e)
+        {
+            
+        }
+       public int [] par= new int[4];
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+            //spliting string with different escape sequence;
+
+
+
+            for (int i = 0; i < edit.Lines.Length - 1; i++)//counting length of program
+            {
+                //stored counted length in string
+                line = edit.Lines;
+                value = line[i].Split(' ');
+               
+
+                if (value[0].Equals("DrawTo", StringComparison.OrdinalIgnoreCase))  //parsing the command
+                {
+                    
+                    par[0] = Convert.ToInt32(value[1]);
+                    par[1] = Convert.ToInt32(value[2]);
+                   
+                }
+
+                if (value[0].Equals("Rectangle", StringComparison.OrdinalIgnoreCase))//checking the command
+                {
+                    abstractShapes ab = factory.getShape("Rectangle");
+                    par[2] = Convert.ToInt32(value[1]);
+                    par[3] = Convert.ToInt32(value[2]);
+
+                    ab.setData(par);
+                    ab.drawShape(e.Graphics);  
+                }
+
+
+               if (value[0].Equals("Circle", StringComparison.OrdinalIgnoreCase))
+                {
+                    abstractShapes ba = factory.getShape("Circle");
+                    par[2] = Convert.ToInt32(value[1]);
+                    par[3] = Convert.ToInt32(value[2]);
+                    ba.setData(par);
+                    ba.drawShape(e.Graphics);
+                    
+                }
+
+
+
+            }
+        }
     }
 }
+
