@@ -22,7 +22,6 @@ namespace ShapeInterface
             // throw new NotImplementedException();
             Pen p = new Pen(Color.Black, 2);
             SolidBrush b = new SolidBrush(Color.Black);
-            g.FillEllipse(b, ax, ay, radius1, radius2);
             g.DrawEllipse(p, ax, ay, radius1, radius2);
 
         }

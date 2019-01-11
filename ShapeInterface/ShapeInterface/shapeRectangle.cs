@@ -27,7 +27,7 @@ namespace ShapeInterface
            // throw new NotImplementedException();
             Pen p = new Pen(Color.Red,2);
             SolidBrush b = new SolidBrush(Color.Red);
-            g.FillRectangle(b, x, y, length, breadth);
+            
             g.DrawRectangle(p, x, y, length, breadth);
 
         }

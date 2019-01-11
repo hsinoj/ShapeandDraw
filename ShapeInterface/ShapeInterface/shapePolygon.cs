@@ -36,8 +36,6 @@ namespace ShapeInterface
             pt[3] = new Point(po7, po8);
             pt[4] = new Point(po9, po10);
            
-
-            g.FillPolygon(b, pt);
             g.DrawPolygon(pp, pt);
         }
 
