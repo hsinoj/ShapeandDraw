@@ -9,28 +9,36 @@ namespace ShapeInterface
     class drawFactory
     {
         
-     
+      /// <summary>
+      /// design pattern is created
+      /// dynamically the data is passed
+      /// return new isntance if the specific type of shape is selected
+      /// to remove space trime is done
+      /// getshape method is instantiate where type of shape is passed as paramtere
+      /// </summary>
+      /// <param name="drawType"></param>
+      /// <returns></returns>
         public abstractShapes getShape(String drawType)
         {
            drawType = drawType.Trim();
 
-            if (drawType.Equals("CIRCLE", StringComparison.OrdinalIgnoreCase))
+            if (drawType.Equals("CIRCLE", StringComparison.OrdinalIgnoreCase)) 
             {
-                return new shapeCircle();
+                return new shapeCircle(); //creating instance of circle
 
             }
             else if (drawType.Equals("RECTANGLE", StringComparison.OrdinalIgnoreCase))
             {
-                return new shapeRectangle();
+                return new shapeRectangle(); //creating instance of rectangle
 
             }
             else if (drawType.Equals("TRIANGLE", StringComparison.OrdinalIgnoreCase))
             {
-                return new shapeTriangle();
+                return new shapeTriangle(); //creating instance of rectangle
             }
             else if (drawType.Equals("POLYGON", StringComparison.OrdinalIgnoreCase))
             {
-                return new shapePolygon();
+                return new shapePolygon(); //creating instance of polygon
             }
             else
             {

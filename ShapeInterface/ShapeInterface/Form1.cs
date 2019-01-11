@@ -27,14 +27,25 @@ namespace ShapeInterface
         {
 
         }
-
+        /// <summary>
+        /// another form is called
+        /// openeing specific form
+        /// closing current form
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void button1_Click(object sender, EventArgs e)
         {
             inputOutput ed = new inputOutput(this); //creating instance of another form
             ed.Show(); //opening the specific form
             Visible = false; //closing the current form
         }
-
+        /// <summary>
+        /// openign a file explore dialog box
+        /// data reads only in text format
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         public void button2_Click(object sender, EventArgs e)
         {
             inputOutput ed = new inputOutput(this);

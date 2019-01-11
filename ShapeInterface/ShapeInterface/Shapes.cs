@@ -7,10 +7,16 @@ using System.Threading.Tasks;
 
 namespace ShapeInterface
 {
+    /// <summary>
+    /// interface is created
+    /// this is a parent method
+    /// every properties of its is inherited by child clsses
+    /// </summary>
     interface Shapes
     {
-        void setData(int[] list);
-        void drawShape(Graphics g);
+        
+        void setData(int[] list); //setting data
+        void drawShape(Graphics g); //drawing method
 
     }
 }

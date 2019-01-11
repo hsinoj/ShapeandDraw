@@ -15,17 +15,26 @@ namespace ShapeInterface
         int radius1;
         int radius2;
 
-       
 
+        /// <summary>
+        /// graphics is created
+        /// pen instance is used to draw border for shape
+        /// </summary>
+        /// <param name="g">with the help of graphic object rectangle is drawn</param>
         public override void drawShape(Graphics g)
         {
             // throw new NotImplementedException();
-            Pen p = new Pen(Color.Black, 2);
-            SolidBrush b = new SolidBrush(Color.Black);
-            g.DrawEllipse(p, ax, ay, radius1, radius2);
+            Pen p = new Pen(Color.Black, 2);//circle border is drawn
+            
+            g.DrawEllipse(p, ax, ay, radius1, radius2);//circle is drawn
 
         }
-
+        /// <summary>
+        /// setting data into parameter
+        /// parameter are enlisted in array format
+        /// this is used for same variable
+        /// </summary>
+        /// <param name="list">variable is instantiate so every value can pass thorugh it</param>
         public override void setData(int[] lists)
         {
             //throw new NotImplementedException();

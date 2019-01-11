@@ -14,11 +14,13 @@ namespace ShapeInterface
 {
     public partial class inputOutput : Form
     {
-        String[] value;
+        String[] value; //intiliazing array in ss=tring
         String[] line;
-        Form1 f1;
-        drawFactory factory = new drawFactory();
-        Hashtable hashtable = new Hashtable();
+        Form1 f1; 
+        int counter;
+        
+        drawFactory factory = new drawFactory(); //creating draw factory instacne
+        Hashtable hashtable = new Hashtable(); //creating hastable for mapping key and values
         public inputOutput(Form1 f1)
         {
             InitializeComponent();
@@ -26,6 +28,12 @@ namespace ShapeInterface
             this.f1 = f1;
         }
 
+        /// <summary>
+        /// This part is for the user customization of button
+        /// panel has been called
+        /// </summary>
+        /// <param name="sender">object is send</param>
+        /// <param name="e">event is handele</param>
         private void button1_Click(object sender, EventArgs e)
         {
             run.TabStop = false;
@@ -33,7 +41,7 @@ namespace ShapeInterface
             run.FlatAppearance.BorderSize = 0;
             run.FlatAppearance.BorderColor = Color.FromArgb(0, 255, 255, 255); //transparent
 
-            panel1.Refresh();
+            panel1.Refresh(); //calling panel method
         }
 
         private void button1_Click_1(object sender, EventArgs e)
@@ -44,7 +52,14 @@ namespace ShapeInterface
             exit.FlatAppearance.BorderColor = Color.FromArgb(0, 255, 255, 255); //transparent
             Application.Exit();
         }
-
+        /// <summary>
+        /// it is for opening the dialgbox
+        /// open file into c drive. 
+        /// Only text file is read
+        /// the file is ready stream reader
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void loadToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Stream myStream = null;//instantiating null value for stra
@@ -72,7 +87,13 @@ namespace ShapeInterface
                 }
             }
         }
-
+        /// <summary>
+        /// this part is for saving the textfield file
+        /// stream write is used to wirte file in text fom
+        /// asnc is use for loading file in text format
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private async void saveToolStripMenuItem_Click(object sender, EventArgs e)
         {
             SaveFileDialog sfd = new SaveFileDialog();//creating a instance of a dialog box
@@ -101,14 +122,20 @@ namespace ShapeInterface
         {
 
         }
-
+        /// <summary>
+        /// reading file from file explorer
+        /// the file is openend with the help of filestream
+        /// stream reader is used for reading text file in text format
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void help_Click(object sender, EventArgs e)
         {
 
             var fileStream = new FileStream(@"E:\study\ShapeandDraw\help.txt", FileMode.Open, FileAccess.Read);
             using (var streamReader = new StreamReader(fileStream, Encoding.UTF8))
             {
-                edit.Text = streamReader.ReadToEnd();
+                edit.Text = streamReader.ReadToEnd(); //text loaded in textbox
             }
         }
 
@@ -116,10 +143,23 @@ namespace ShapeInterface
         {
 
         }
+        //intiliazing array with diffeent index property
         public int[] par = new int[4];
         public int[] rap = new int[6];
         public int[] cab = new int[17];
 
+
+        /// <summary>
+        /// this part is for reading textbox file line by line
+        /// spliting the line by escape sequeence like by space
+        /// creating own command for drawing 
+        /// different basic geometry shapes and complex polygon and texture are drawn
+        /// syntax checking 
+        /// valid command and parameter is checked
+        /// complex commandis done like repeat,loop and if end if confiton
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void panel1_Paint(object sender, PaintEventArgs e)
         {
 
@@ -137,6 +177,13 @@ namespace ShapeInterface
                 if (value[0].Equals("DrawTo", StringComparison.OrdinalIgnoreCase))  //parsing the command
                 {
                     //rectangle
+                    /**
+                     * hcreating rectangle
+                     * hashtable used for string so integer cannot loaded
+                     * parsing the string variable to integer
+                     * storing every variable in array
+                     * try and catch is used
+                     */
                     try
                     {
 
@@ -223,14 +270,16 @@ namespace ShapeInterface
                         cab[1] = Convert.ToInt32(hashtable[value[2]]);
                     }
                 }
-                else if (value[0].Equals("var") == true)
-                {
-                    if (value[2].Equals("=") == true && value[4].Equals(";") == true)
-                    {
-                        int From = line[i].IndexOf("var") + "var".Length;
-                        int To = line[i].LastIndexOf("=");
 
-                        String res = line[i].Substring(From, To - From).Replace(" ", String.Empty);
+                //variable format
+                else if (value[0].Equals("var") == true) //checking whether first line var or not
+                {
+                    if (value[2].Equals("=") == true && value[4].Equals(";") == true) //checking whether the line contain = or semi colo
+                    {
+                        int From = line[i].IndexOf("var") + "var".Length; //chcking the var positon
+                        int To = line[i].LastIndexOf("="); //checking = sign position
+
+                        String res = line[i].Substring(From, To - From).Replace(" ", String.Empty); //extract the long string 
 
                         int From1 = line[i].IndexOf("=") + "=".Length;
                         int To1 = line[i].LastIndexOf(";");
@@ -238,7 +287,7 @@ namespace ShapeInterface
                         int res1 = Int32.Parse(line[i].Substring(From1, To1 - From1).Replace(" ", String.Empty));
                         try
                         {
-                            hashtable.Add(res, res1);
+                            hashtable.Add(res, res1);//key and values are passed
                         }
                         catch (Exception x)
                         {
@@ -313,7 +362,7 @@ namespace ShapeInterface
                }
 
 
-
+                //xaxis
 
                 if (value[0].Contains("++") && value[0].Contains(";"))
                 {
@@ -788,6 +837,7 @@ namespace ShapeInterface
                         }
                     }
 
+                   
 
                 }
             }

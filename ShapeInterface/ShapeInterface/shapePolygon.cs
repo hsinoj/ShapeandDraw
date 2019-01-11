@@ -18,12 +18,16 @@ namespace ShapeInterface
                   po7,
                   po8,
                   po9,po10;
-
+        /// <summary>
+        /// graphics is created
+        /// pen instance is used to draw border for shape
+        /// </summary>
+        /// <param name="g">with the help of graphic object rectangle is drawn</param>
         public override void drawShape(Graphics g)
         {
             // Create pen.
             Pen pp = new Pen(Color.Red);
-            SolidBrush b = new SolidBrush(Color.Gray);
+     
 
             // Create points that define polygon.
 
@@ -38,7 +42,12 @@ namespace ShapeInterface
            
             g.DrawPolygon(pp, pt);
         }
-
+        /// <summary>
+        /// setting data into parameter
+        /// parameter are enlisted in array format
+        /// this is used for same variable
+        /// </summary>
+        /// <param name="list">variable is instantiate so every value can pass thorugh it</param>
         public override void setData(int[] list)
         {
             // throw new NotImplementedException();

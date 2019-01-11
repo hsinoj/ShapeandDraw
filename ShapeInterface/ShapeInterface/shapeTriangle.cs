@@ -16,21 +16,31 @@ namespace ShapeInterface
         int p4;
         int p5;
         int p6;
-
+        /// <summary>
+        /// graphics is created
+        /// pen instance is used to draw border for shape
+        /// </summary>
+        /// <param name="g">with the help of graphic object rectangle is drawn</param>
         public override void drawShape(Graphics g)
         {
             //throw new NotImplementedException();
-            Pen pp = new Pen(Color.Gray);
-            SolidBrush b = new SolidBrush(Color.Gray);
+            Pen pp = new Pen(Color.Gray);//triable is create
+           
             Point[] p = new Point[3];
             p[0] = new Point(p1, p2);
             p[1] = new Point(p3, p4);
             p[2] = new Point(p5, p6);
           
-            g.DrawPolygon(pp,p);
+            g.DrawPolygon(pp,p);//triangle is drawn
 
         }
 
+        /// <summary>
+        /// setting data into parameter
+        /// parameter are enlisted in array format
+        /// this is used for same variable
+        /// </summary>
+        /// <param name="list">variable is instantiate so every value can pass thorugh it</param>
         public override void setData(int[] list)
         {
             //throw new NotImplementedException();
