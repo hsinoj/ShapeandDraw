@@ -44,7 +44,7 @@ namespace ShapeInterface
             {
                
                     //if we get here then what has been passed in is unknown so throw an appropriate exception
-                    System.ArgumentException argEx = new System.ArgumentException("Factory error: " + drawType + " does not exist");
+                    System.ArgumentException argEx = new System.ArgumentException("Factory error: " + drawType + " shapes are not exist ");
                     throw argEx;
                 
                 

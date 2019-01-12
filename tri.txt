@@ -1,0 +1,9 @@
+var a = 33 ;
+var b = 44 ;
+var d = 55 ;
+var e = 66 ;
+varf f = 77 ;
+var g = 88 ;
+drawto a b
+triangle d e f g
+
