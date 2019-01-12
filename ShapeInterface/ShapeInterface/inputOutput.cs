@@ -16,7 +16,7 @@ namespace ShapeInterface
     {
         String[] value; //intiliazing array in ss=tring
         String[] line;
-        Form1 f1; 
+        Form1 f1;
         int counter;
         public string store = null;
         public int[] par2 = new int[2];
@@ -182,400 +182,412 @@ namespace ShapeInterface
                 value = line[i].Split(' ');
 
                 //chekcing command
-             //   if (value[0].Equals("DrawTo", StringComparison.OrdinalIgnoreCase)|| value[0].Equals("Repeat", StringComparison.OrdinalIgnoreCase)
-               //     || value[0].Equals("Triangle", StringComparison.OrdinalIgnoreCase) || value[0].Equals("Rectagnle", StringComparison.OrdinalIgnoreCase)
-                 //   || value[0].Equals("Circle", StringComparison.OrdinalIgnoreCase) || value[0].Equals("Polygon", StringComparison.OrdinalIgnoreCase))
-                //{
+                if (value[0].Equals("DrawTo", StringComparison.OrdinalIgnoreCase)        || value[0].Equals("Repeat", StringComparison.OrdinalIgnoreCase)
+                      || value[0].Equals("Triangle", StringComparison.OrdinalIgnoreCase) || value[0].Equals("Rectangle", StringComparison.OrdinalIgnoreCase)
+                      || value[0].Equals("Circle", StringComparison.OrdinalIgnoreCase)   || value[0].Equals("Polygon", StringComparison.OrdinalIgnoreCase)
+                      || value[0].Equals("Loop", StringComparison.OrdinalIgnoreCase)  
+                      || value[0].Equals("IF")
+                      || value[0].Equals("width", StringComparison.OrdinalIgnoreCase)    || value[0].Equals("height", StringComparison.OrdinalIgnoreCase) 
+                      || value[0].Equals("endloop", StringComparison.OrdinalIgnoreCase)  || value[0].Equals("circl", StringComparison.OrdinalIgnoreCase)
+                      || value[0].Equals("radius", StringComparison.OrdinalIgnoreCase)   || value[0].Equals("triangl", StringComparison.OrdinalIgnoreCase)
+                      || value[0].Equals("p", StringComparison.OrdinalIgnoreCase)        || value[0].Equals("h", StringComparison.OrdinalIgnoreCase)
+                      || value[0].Equals("if")                                           || value[0].Equals("endIf", StringComparison.OrdinalIgnoreCase)
+                      || value[0].Equals("var")                                          || value[0].Equals("Rectagnl", StringComparison.OrdinalIgnoreCase))
+            {
 
-                
+
                     if (value[0].Equals("DrawTo", StringComparison.OrdinalIgnoreCase))  //parsing the command
-                {
-                    //rectangle
-                    /**
-                     * hcreating rectangle
-                     * hashtable used for string so integer cannot loaded
-                     * parsing the string variable to integer
-                     * storing every variable in array
-                     * try and catch is used
-                     */
-                    try
                     {
-
-                        par[0] = Convert.ToInt32(hashtable[value[1]]);
-                        par[1] = Convert.ToInt32(hashtable[value[2]]);
-
-                    }
-                    catch
-                    {
-                        par[0] = Convert.ToInt32(value[1]);
-                        par[1] = Convert.ToInt32(value[2]);
-                    }
-
-
-                    try
-                    {
-                        par[0] = Convert.ToInt32(hashtable[value[1]]);
-                        par[1] = Convert.ToInt32(hashtable[value[2]]);
-
-                    }
-                    catch
-                    {
-                        par[0] = Convert.ToInt32(value[1]);
-                        par[1] = Convert.ToInt32(value[2]);
-                    }
-
-                    //circle
-
-                    try
-                    {
-                        par[0] = Convert.ToInt32(value[1]);
-                        par[1] = Convert.ToInt32(value[2]);
-                    }
-                    catch
-                    {
-                        par[0] = Convert.ToInt32(hashtable[value[1]]);
-                        par[1] = Convert.ToInt32(hashtable[value[2]]);
-                    }
-                    //triangle
-
-                    try
-                    {
-                        rap[0] = Convert.ToInt32(hashtable[value[1]]);
-                        rap[1] = Convert.ToInt32(hashtable[value[2]]);
-                    }
-                    catch
-                    {
-                        rap[0] = Convert.ToInt32(value[1]);
-                        rap[1] = Convert.ToInt32(value[2]);
-                    }
-                    try
-                    {
-                        rap[0] = Convert.ToInt32(value[1]);
-                        rap[1] = Convert.ToInt32(value[2]);
-
-                    }
-                    catch
-                    {
-                        rap[0] = Convert.ToInt32(hashtable[value[1]]);
-                        rap[1] = Convert.ToInt32(hashtable[value[2]]);
-                    }
-
-                    //polygon 
-                    try
-                    {
-                        cab[0] = Convert.ToInt32(hashtable[value[1]]);
-                        cab[1] = Convert.ToInt32(hashtable[value[2]]);
-                    }
-                    catch
-                    {
-                        cab[0] = Convert.ToInt32(value[1]);
-                        cab[1] = Convert.ToInt32(value[2]);
-                    }
-
-                    try
-                    {
-                        cab[0] = Convert.ToInt32(value[1]);
-                        cab[1] = Convert.ToInt32(value[2]);
-                    }
-                    catch
-                    {
-
-                        cab[0] = Convert.ToInt32(hashtable[value[1]]);
-                        cab[1] = Convert.ToInt32(hashtable[value[2]]);
-                    }
-                }
-
-                //variable format
-                else if (value[0].Equals("var") == true) //checking whether first line var or not
-                {
-                    if (value[2].Equals("=") == true && value[4].Equals(";") == true) //checking whether the line contain = or semi colo
-                    {
-                        int From = line[i].IndexOf("var") + "var".Length; //chcking the var positon
-                        int To = line[i].LastIndexOf("="); //checking = sign position
-
-                        String res = line[i].Substring(From, To - From).Replace(" ", String.Empty); //extract the long string 
-
-                        int From1 = line[i].IndexOf("=") + "=".Length;
-                        int To1 = line[i].LastIndexOf(";");
-
-                        int res1 = Int32.Parse(line[i].Substring(From1, To1 - From1).Replace(" ", String.Empty));
+                        //rectangle
+                        /**
+                         * hcreating rectangle
+                         * hashtable used for string so integer cannot loaded
+                         * parsing the string variable to integer
+                         * storing every variable in array
+                         * try and catch is used
+                         */
                         try
                         {
-                            hashtable.Add(res, res1);//key and values are passed
+
+                            par[0] = Convert.ToInt32(hashtable[value[1]]);
+                            par[1] = Convert.ToInt32(hashtable[value[2]]);
+
                         }
-                        catch (Exception x)
+                        catch
                         {
-                            hashtable[res] = res1;
+                            par[0] = Convert.ToInt32(value[1]);
+                            par[1] = Convert.ToInt32(value[2]);
+                        }
+
+
+                        try
+                        {
+                            par[0] = Convert.ToInt32(hashtable[value[1]]);
+                            par[1] = Convert.ToInt32(hashtable[value[2]]);
+
+                        }
+                        catch
+                        {
+                            par[0] = Convert.ToInt32(value[1]);
+                            par[1] = Convert.ToInt32(value[2]);
+                        }
+
+                        //circle
+
+                        try
+                        {
+                            par[0] = Convert.ToInt32(value[1]);
+                            par[1] = Convert.ToInt32(value[2]);
+                        }
+                        catch
+                        {
+                            par[0] = Convert.ToInt32(hashtable[value[1]]);
+                            par[1] = Convert.ToInt32(hashtable[value[2]]);
+                        }
+                        //triangle
+
+                        try
+                        {
+                            rap[0] = Convert.ToInt32(hashtable[value[1]]);
+                            rap[1] = Convert.ToInt32(hashtable[value[2]]);
+                        }
+                        catch
+                        {
+                            rap[0] = Convert.ToInt32(value[1]);
+                            rap[1] = Convert.ToInt32(value[2]);
+                        }
+                        try
+                        {
+                            rap[0] = Convert.ToInt32(value[1]);
+                            rap[1] = Convert.ToInt32(value[2]);
+
+                        }
+                        catch
+                        {
+                            rap[0] = Convert.ToInt32(hashtable[value[1]]);
+                            rap[1] = Convert.ToInt32(hashtable[value[2]]);
+                        }
+
+                        //polygon 
+                        try
+                        {
+                            cab[0] = Convert.ToInt32(hashtable[value[1]]);
+                            cab[1] = Convert.ToInt32(hashtable[value[2]]);
+                        }
+                        catch
+                        {
+                            cab[0] = Convert.ToInt32(value[1]);
+                            cab[1] = Convert.ToInt32(value[2]);
+                        }
+
+                        try
+                        {
+                            cab[0] = Convert.ToInt32(value[1]);
+                            cab[1] = Convert.ToInt32(value[2]);
+                        }
+                        catch
+                        {
+
+                            cab[0] = Convert.ToInt32(hashtable[value[1]]);
+                            cab[1] = Convert.ToInt32(hashtable[value[2]]);
+                        }
+                    }
+
+                    //variable format
+                    else if (value[0].Equals("var")) //checking whether first line var or not
+                    {
+                        if (value[2].Equals("=") == true && value[4].Equals(";") == true) //checking whether the line contain = or semi colo
+                        {
+                            int From = line[i].IndexOf("var") + "var".Length; //chcking the var positon
+                            int To = line[i].LastIndexOf("="); //checking = sign position
+
+                            String res = line[i].Substring(From, To - From).Replace(" ", String.Empty); //extract the long string 
+
+                            int From1 = line[i].IndexOf("=") + "=".Length;
+                            int To1 = line[i].LastIndexOf(";");
+
+                            int res1 = Int32.Parse(line[i].Substring(From1, To1 - From1).Replace(" ", String.Empty));
+                            try
+                            {
+                                hashtable.Add(res, res1);//key and values are passed
+                            }
+                            catch (Exception x)
+                            {
+                                hashtable[res] = res1;
+                            }
+
+
                         }
 
 
                     }
-                    
 
-                }
 
-              
-                    
+
 
 
 
                     if (value[0].Equals("Rectangle", StringComparison.OrdinalIgnoreCase))//checking the command
                     {
-                    abstractShapes ab = factory.getShape("Rectangle");
-                    try
-                    {
-                        par[2] = Convert.ToInt32(hashtable[value[1]]);
-                        par[3] = Convert.ToInt32(hashtable[value[2]]);
-                    }
-
-                    catch
-                    {
-                        par[2] = Convert.ToInt32(value[1]);
-                        par[3] = Convert.ToInt32(value[2]);
-
-                    }
-
-                    try
-                    {
-                        par[2] = Convert.ToInt32(value[1]);
-                        par[3] = Convert.ToInt32(value[2]);
-                    }
-                    catch
-                    {
-                        par[2] = Convert.ToInt32(hashtable[value[1]]);
-                        par[3] = Convert.ToInt32(hashtable[value[2]]);
-                    }
-                    
-
-
-                    ab.setData(par);
-                    ab.drawShape(e.Graphics);
-                }
-
-               else if (value[0].Equals("var") == true)
-                {
-                    if (value[2].Equals("=") == true && value[4].Equals(";") == true)
-                    {
-                        int From = line[i].IndexOf("var") + "var".Length;
-                        int To = line[i].LastIndexOf("=");
-
-                        String res = line[i].Substring(From, To - From).Replace(" ", String.Empty);
-
-                        int From1 = line[i].IndexOf("=") + "=".Length;
-                        int To1 = line[i].LastIndexOf(";");
-
-                        int res1 = Int32.Parse(line[i].Substring(From1, To1 - From1).Replace(" ", String.Empty));
+                        abstractShapes ab = factory.getShape("Rectangle");
                         try
                         {
-                            hashtable.Add(res, res1);
+                            par[2] = Convert.ToInt32(hashtable[value[1]]);
+                            par[3] = Convert.ToInt32(hashtable[value[2]]);
                         }
-                        catch (Exception x)
+
+                        catch
                         {
-                            hashtable[res] = res1;
+                            par[2] = Convert.ToInt32(value[1]);
+                            par[3] = Convert.ToInt32(value[2]);
+
                         }
-                    }
-               }
 
-
-                //xaxis
-
-               
-
-                if (value[0].Equals("Circle", StringComparison.OrdinalIgnoreCase))
-                {
-                    abstractShapes ba = factory.getShape("Circle");
-                    try
-                    {
-                        par[2] = Convert.ToInt32(hashtable[value[1]]);
-                        par[3] = Convert.ToInt32(hashtable[value[2]]);
-                    }
-
-                    catch
-                    {
-                        par[2] = Convert.ToInt32(value[1]);
-                        par[3] = Convert.ToInt32(value[2]);
-
-                    }
-
-                    try
-                    {
-                        par[2] = Convert.ToInt32(value[1]);
-                        par[3] = Convert.ToInt32(value[2]);
-                    }
-                    catch
-                    {
-                        par[2] = Convert.ToInt32(hashtable[value[1]]);
-                        par[3] = Convert.ToInt32(hashtable[value[2]]);
-                    }
-                    ba.setData(par);
-                    ba.drawShape(e.Graphics);
-
-                }
-                else if (value[0].Equals("var") == true)
-                {
-                    if (value[2].Equals("=") == true && value[4].Equals(";") == true)
-                    {
-                        int From = line[i].IndexOf("var") + "var".Length;
-                        int To = line[i].LastIndexOf("=");
-
-                        String res = line[i].Substring(From, To - From).Replace(" ", String.Empty);
-
-                        int From1 = line[i].IndexOf("=") + "=".Length;
-                        int To1 = line[i].LastIndexOf(";");
-
-                        int res1 = Int32.Parse(line[i].Substring(From1, To1 - From1).Replace(" ", String.Empty));
                         try
                         {
-                            hashtable.Add(res, res1);
+                            par[2] = Convert.ToInt32(value[1]);
+                            par[3] = Convert.ToInt32(value[2]);
                         }
-                        catch (Exception x)
+                        catch
                         {
-                            hashtable[res] = res1;
+                            par[2] = Convert.ToInt32(hashtable[value[1]]);
+                            par[3] = Convert.ToInt32(hashtable[value[2]]);
+                        }
+
+
+
+                        ab.setData(par);
+                        ab.drawShape(e.Graphics);
+                    }
+
+                    else if (value[0].Equals("var"))
+                    {
+                        if (value[2].Equals("=") == true && value[4].Equals(";") == true)
+                        {
+                            int From = line[i].IndexOf("var") + "var".Length;
+                            int To = line[i].LastIndexOf("=");
+
+                            String res = line[i].Substring(From, To - From).Replace(" ", String.Empty);
+
+                            int From1 = line[i].IndexOf("=") + "=".Length;
+                            int To1 = line[i].LastIndexOf(";");
+
+                            int res1 = Int32.Parse(line[i].Substring(From1, To1 - From1).Replace(" ", String.Empty));
+                            try
+                            {
+                                hashtable.Add(res, res1);
+                            }
+                            catch (Exception x)
+                            {
+                                hashtable[res] = res1;
+                            }
                         }
                     }
-                }
 
-                if (value[0].Equals("Triangle", StringComparison.OrdinalIgnoreCase))
-                {
-                    abstractShapes bac = factory.getShape("Triangle");
 
-                    try{ 
-                    rap[2] = Convert.ToInt32(hashtable[value[1]]);
-                    rap[3] = Convert.ToInt32(hashtable[value[2]]);
-                    rap[4] = Convert.ToInt32(hashtable[value[3]]);
-                    rap[5] = Convert.ToInt32(hashtable[value[4]]);
-                }
+                    //xaxis
 
-                catch
-                    { 
-                    rap[2] = Convert.ToInt32(value[1]);
-                    rap[3] = Convert.ToInt32(value[2]);
-                    rap[4] = Convert.ToInt32(value[3]);
-                    rap[5] = Convert.ToInt32(value[4]);
-                }
 
-                    try{ 
-                    rap[2] = Convert.ToInt32(value[1]);
-                    rap[3] = Convert.ToInt32(value[2]);
-                    rap[4] = Convert.ToInt32(value[3]);
-                    rap[5] = Convert.ToInt32(value[4]);
-                }
-                    catch{
-                    rap[2] = Convert.ToInt32(hashtable[value[1]]);
-                    rap[3] = Convert.ToInt32(hashtable[value[2]]);
-                    rap[4] = Convert.ToInt32(hashtable[value[3]]);
-                    rap[5] = Convert.ToInt32(hashtable[value[4]]);
-                }
-                    bac.setData(rap);
-                    bac.drawShape(e.Graphics);
-                }
-                else if (value[0].Equals("var") == true)
-                {
-                    if (value[2].Equals("=") == true && value[4].Equals(";") == true)
+
+                    if (value[0].Equals("Circle", StringComparison.OrdinalIgnoreCase))
                     {
-                        int From = line[i].IndexOf("var") + "var".Length;
-                        int To = line[i].LastIndexOf("=");
-
-                        String res = line[i].Substring(From, To - From).Replace(" ", String.Empty);
-
-                        int From1 = line[i].IndexOf("=") + "=".Length;
-                        int To1 = line[i].LastIndexOf(";");
-
-                        int res1 = Int32.Parse(line[i].Substring(From1, To1 - From1).Replace(" ", String.Empty));
+                        abstractShapes ba = factory.getShape("Circle");
                         try
                         {
-                            hashtable.Add(res, res1);
+                            par[2] = Convert.ToInt32(hashtable[value[1]]);
+                            par[3] = Convert.ToInt32(hashtable[value[2]]);
                         }
-                        catch (Exception x)
+
+                        catch
                         {
-                            hashtable[res] = res1;
+                            par[2] = Convert.ToInt32(value[1]);
+                            par[3] = Convert.ToInt32(value[2]);
+
                         }
-                    }
-                }
 
-
-
-
-                if (value[0].Equals("POLYGON", StringComparison.OrdinalIgnoreCase))
-                {
-                    abstractShapes abs = factory.getShape("POLYGON");
-
-                    try
-                    {
-                        cab[2] = Convert.ToInt32(hashtable[value[1]]);
-                        cab[3] = Convert.ToInt32(hashtable[value[2]]);
-                        cab[4] = Convert.ToInt32(hashtable[value[3]]);
-                        cab[5] = Convert.ToInt32(hashtable[value[4]]);
-                        cab[6] = Convert.ToInt32(hashtable[value[5]]);
-                        cab[7] = Convert.ToInt32(hashtable[value[6]]);
-                        cab[8] = Convert.ToInt32(hashtable[value[7]]);
-                        cab[9] = Convert.ToInt32(hashtable[value[8]]);
-                    }
-
-                    catch
-                    {
-                        cab[2] = Convert.ToInt32(value[1]);
-                        cab[3] = Convert.ToInt32(value[2]);
-                        cab[4] = Convert.ToInt32(value[3]);
-                        cab[5] = Convert.ToInt32(value[4]);
-                        cab[6] = Convert.ToInt32(value[5]);
-                        cab[7] = Convert.ToInt32(value[6]);
-                        cab[8] = Convert.ToInt32(value[7]);
-                        cab[9] = Convert.ToInt32(value[8]);
-                    }
-
-                    try{
-                        cab[2] = Convert.ToInt32(value[1]);
-                        cab[3] = Convert.ToInt32(value[2]);
-                        cab[4] = Convert.ToInt32(value[3]);
-                        cab[5] = Convert.ToInt32(value[4]);
-                        cab[6] = Convert.ToInt32(value[5]);
-                        cab[7] = Convert.ToInt32(value[6]);
-                        cab[8] = Convert.ToInt32(value[7]);
-                        cab[9] = Convert.ToInt32(value[8]);
-                    }
-                    catch
-                    {
-                        cab[2] = Convert.ToInt32(hashtable[value[1]]);
-                        cab[3] = Convert.ToInt32(hashtable[value[2]]);
-                        cab[4] = Convert.ToInt32(hashtable[value[3]]);
-                        cab[5] = Convert.ToInt32(hashtable[value[4]]);
-                        cab[6] = Convert.ToInt32(hashtable[value[5]]);
-                        cab[7] = Convert.ToInt32(hashtable[value[6]]);
-                        cab[8] = Convert.ToInt32(hashtable[value[7]]);
-                        cab[9] = Convert.ToInt32(hashtable[value[8]]);
-                    }
-
-
-                    abs.setData(cab);
-                    abs.drawShape(e.Graphics);
-
-                }
-                else if (value[0].Equals("var") == true)
-                {
-                    if (value[2].Equals("=") == true && value[4].Equals(";") == true)
-                    {
-                        int From = line[i].IndexOf("var") + "var".Length;
-                        int To = line[i].LastIndexOf("=");
-
-                        String res = line[i].Substring(From, To - From).Replace(" ", String.Empty);
-
-                        int From1 = line[i].IndexOf("=") + "=".Length;
-                        int To1 = line[i].LastIndexOf(";");
-
-                        int res1 = Int32.Parse(line[i].Substring(From1, To1 - From1).Replace(" ", String.Empty));
                         try
                         {
-                            hashtable.Add(res, res1);
+                            par[2] = Convert.ToInt32(value[1]);
+                            par[3] = Convert.ToInt32(value[2]);
                         }
-                        catch (Exception x)
+                        catch
                         {
-                            hashtable[res] = res1;
+                            par[2] = Convert.ToInt32(hashtable[value[1]]);
+                            par[3] = Convert.ToInt32(hashtable[value[2]]);
+                        }
+                        ba.setData(par);
+                        ba.drawShape(e.Graphics);
+
+                    }
+                    else if (value[0].Equals("var"))
+                    {
+                        if (value[2].Equals("=") == true && value[4].Equals(";") == true)
+                        {
+                            int From = line[i].IndexOf("var") + "var".Length;
+                            int To = line[i].LastIndexOf("=");
+
+                            String res = line[i].Substring(From, To - From).Replace(" ", String.Empty);
+
+                            int From1 = line[i].IndexOf("=") + "=".Length;
+                            int To1 = line[i].LastIndexOf(";");
+
+                            int res1 = Int32.Parse(line[i].Substring(From1, To1 - From1).Replace(" ", String.Empty));
+                            try
+                            {
+                                hashtable.Add(res, res1);
+                            }
+                            catch (Exception x)
+                            {
+                                hashtable[res] = res1;
+                            }
                         }
                     }
-                }
 
-                    if (value[0].Equals("Repeat", StringComparison.OrdinalIgnoreCase)|| value[0].Equals("Loop", StringComparison.OrdinalIgnoreCase))
+                    if (value[0].Equals("Triangle", StringComparison.OrdinalIgnoreCase))
+                    {
+                        abstractShapes bac = factory.getShape("Triangle");
+
+                        try
+                        {
+                            rap[2] = Convert.ToInt32(hashtable[value[1]]);
+                            rap[3] = Convert.ToInt32(hashtable[value[2]]);
+                            rap[4] = Convert.ToInt32(hashtable[value[3]]);
+                            rap[5] = Convert.ToInt32(hashtable[value[4]]);
+                        }
+
+                        catch
+                        {
+                            rap[2] = Convert.ToInt32(value[1]);
+                            rap[3] = Convert.ToInt32(value[2]);
+                            rap[4] = Convert.ToInt32(value[3]);
+                            rap[5] = Convert.ToInt32(value[4]);
+                        }
+
+                        try
+                        {
+                            rap[2] = Convert.ToInt32(value[1]);
+                            rap[3] = Convert.ToInt32(value[2]);
+                            rap[4] = Convert.ToInt32(value[3]);
+                            rap[5] = Convert.ToInt32(value[4]);
+                        }
+                        catch
+                        {
+                            rap[2] = Convert.ToInt32(hashtable[value[1]]);
+                            rap[3] = Convert.ToInt32(hashtable[value[2]]);
+                            rap[4] = Convert.ToInt32(hashtable[value[3]]);
+                            rap[5] = Convert.ToInt32(hashtable[value[4]]);
+                        }
+                        bac.setData(rap);
+                        bac.drawShape(e.Graphics);
+                    }
+                    else if (value[0].Equals("var"))
+                    {
+                        if (value[2].Equals("=") == true && value[4].Equals(";") == true)
+                        {
+                            int From = line[i].IndexOf("var") + "var".Length;
+                            int To = line[i].LastIndexOf("=");
+
+                            String res = line[i].Substring(From, To - From).Replace(" ", String.Empty);
+
+                            int From1 = line[i].IndexOf("=") + "=".Length;
+                            int To1 = line[i].LastIndexOf(";");
+
+                            int res1 = Int32.Parse(line[i].Substring(From1, To1 - From1).Replace(" ", String.Empty));
+                            try
+                            {
+                                hashtable.Add(res, res1);
+                            }
+                            catch (Exception x)
+                            {
+                                hashtable[res] = res1;
+                            }
+                        }
+                    }
+
+
+
+
+                    if (value[0].Equals("POLYGON", StringComparison.OrdinalIgnoreCase))
+                    {
+                        abstractShapes abs = factory.getShape("POLYGON");
+
+                        try
+                        {
+                            cab[2] = Convert.ToInt32(hashtable[value[1]]);
+                            cab[3] = Convert.ToInt32(hashtable[value[2]]);
+                            cab[4] = Convert.ToInt32(hashtable[value[3]]);
+                            cab[5] = Convert.ToInt32(hashtable[value[4]]);
+                            cab[6] = Convert.ToInt32(hashtable[value[5]]);
+                            cab[7] = Convert.ToInt32(hashtable[value[6]]);
+                            cab[8] = Convert.ToInt32(hashtable[value[7]]);
+                            cab[9] = Convert.ToInt32(hashtable[value[8]]);
+                        }
+
+                        catch
+                        {
+                            cab[2] = Convert.ToInt32(value[1]);
+                            cab[3] = Convert.ToInt32(value[2]);
+                            cab[4] = Convert.ToInt32(value[3]);
+                            cab[5] = Convert.ToInt32(value[4]);
+                            cab[6] = Convert.ToInt32(value[5]);
+                            cab[7] = Convert.ToInt32(value[6]);
+                            cab[8] = Convert.ToInt32(value[7]);
+                            cab[9] = Convert.ToInt32(value[8]);
+                        }
+
+                        try
+                        {
+                            cab[2] = Convert.ToInt32(value[1]);
+                            cab[3] = Convert.ToInt32(value[2]);
+                            cab[4] = Convert.ToInt32(value[3]);
+                            cab[5] = Convert.ToInt32(value[4]);
+                            cab[6] = Convert.ToInt32(value[5]);
+                            cab[7] = Convert.ToInt32(value[6]);
+                            cab[8] = Convert.ToInt32(value[7]);
+                            cab[9] = Convert.ToInt32(value[8]);
+                        }
+                        catch
+                        {
+                            cab[2] = Convert.ToInt32(hashtable[value[1]]);
+                            cab[3] = Convert.ToInt32(hashtable[value[2]]);
+                            cab[4] = Convert.ToInt32(hashtable[value[3]]);
+                            cab[5] = Convert.ToInt32(hashtable[value[4]]);
+                            cab[6] = Convert.ToInt32(hashtable[value[5]]);
+                            cab[7] = Convert.ToInt32(hashtable[value[6]]);
+                            cab[8] = Convert.ToInt32(hashtable[value[7]]);
+                            cab[9] = Convert.ToInt32(hashtable[value[8]]);
+                        }
+
+
+                        abs.setData(cab);
+                        abs.drawShape(e.Graphics);
+
+                    }
+                    else if (value[0].Equals("var"))
+                    {
+                        if (value[2].Equals("=") == true && value[4].Equals(";") == true)
+                        {
+                            int From = line[i].IndexOf("var") + "var".Length;
+                            int To = line[i].LastIndexOf("=");
+
+                            String res = line[i].Substring(From, To - From).Replace(" ", String.Empty);
+
+                            int From1 = line[i].IndexOf("=") + "=".Length;
+                            int To1 = line[i].LastIndexOf(";");
+
+                            int res1 = Int32.Parse(line[i].Substring(From1, To1 - From1).Replace(" ", String.Empty));
+                            try
+                            {
+                                hashtable.Add(res, res1);
+                            }
+                            catch (Exception x)
+                            {
+                                hashtable[res] = res1;
+                            }
+                        }
+                    }
+
+                    if (value[0].Equals("Repeat", StringComparison.OrdinalIgnoreCase) || value[0].Equals("Loop", StringComparison.OrdinalIgnoreCase))
                     {
                         //initializing new parameter for rectangle and circle
                         int[] newpar = new int[4];
@@ -779,7 +791,7 @@ namespace ShapeInterface
                                     }
                                     else
                                     {
-                                        tnewpar[0] = cab[0] ;
+                                        tnewpar[0] = cab[0];
                                         tnewpar[1] = cab[1];
                                         tnewpar[2] = cab[2] + add;
                                         tnewpar[3] = cab[3];
@@ -829,209 +841,85 @@ namespace ShapeInterface
                                 }
                                 else
                                 {
-                                    throw new errorCatch(); 
+                                    throw new errorCatch();
                                 }
                             }
                         }
                     }
 
-                int[] d = new int[2];
+                    int[] d = new int[2];
 
-                //start
-                //loop command
-              
+                    //start
+                    //loop command
+
                     if (value[0].Equals("Loop", StringComparison.OrdinalIgnoreCase))
-                {
-                    MessageBox.Show("inside loop");
-                    counter = Convert.ToInt32(value[1]);
-                }
-                //loop command for rectangle 
-                if (value[0].Equals("Rectangl", StringComparison.OrdinalIgnoreCase))
-                {
-                    MessageBox.Show("inside rec");
-                    store = "Rectangle";
-                    par2[0] = Convert.ToInt32(value[1]);
-                    par2[1] = Convert.ToInt32(value[2]);
-                }
-
-                //loop command for circle
-                if (value[0].Equals("circl", StringComparison.OrdinalIgnoreCase))
-                {
-                    MessageBox.Show("inside cir");
-                    store = "Circle";
-                    par2[0] = Convert.ToInt32(value[1]);
-                    par2[1] = Convert.ToInt32(value[2]);
-
-                }
-                //loop command for triangle
-                if (value[0].Equals("triangl", StringComparison.OrdinalIgnoreCase))
-                {
-                    MessageBox.Show("inside tri");
-                    store = "Triangle";
-                    par3[0] = Convert.ToInt32(value[1]);
-                    par3[1] = Convert.ToInt32(value[2]);
-                    par3[2] = Convert.ToInt32(value[3]);
-                    par3[3] = Convert.ToInt32(value[4]);
-
-                }
-                //collecting width
-                if (value[0].Equals("width", StringComparison.OrdinalIgnoreCase))
-                {
-                    width = Convert.ToInt32(value[2]);
-                    MessageBox.Show("width:" + width);
-                }
-                //collecting height
-                if (value[0].Equals("height", StringComparison.OrdinalIgnoreCase))
-                {
-                    height = Convert.ToInt32(value[2]);
-                    MessageBox.Show("height:" + height);
-                }
-                //collecting radius
-                if (value[0].Equals("radius", StringComparison.OrdinalIgnoreCase))
-                {
-                    radius1 = Convert.ToInt32(value[2]);
-                    MessageBox.Show("radius:" + radius1);
-                }
-                //collecting base 
-                if (value[0].Equals("p", StringComparison.OrdinalIgnoreCase))
-                {
-                    p = Convert.ToInt32(value[2]);
-                    MessageBox.Show("p:" + p);
-                }
-                //collecting hypotenuse 
-                if (value[0].Equals("h", StringComparison.OrdinalIgnoreCase))
-                {
-                    h = Convert.ToInt32(value[2]);
-                    MessageBox.Show("h:" + h);
-                }
-
-
-                //endloop
-                if (value[0].Equals("endloop", StringComparison.OrdinalIgnoreCase))
-                {
-                    //checking rec
-                    if (store.Equals("Rectangle", StringComparison.OrdinalIgnoreCase))
-
                     {
-
-                        for (int y = 0; y < counter; y++)
-                        {
-                            MessageBox.Show("inside loop");
-                            //intance of abstract class
-                            abstractShapes abs = factory.getShape("Rectangle");
-                            if (y == 0)
-                            {
-                                par[2] = par2[0] + width;
-                                par[3] = par2[1] + height;
-                            }
-                            else
-                            {
-                                par[2] = par[2] + width;
-                                par[3] = par[3] + height;
-                            }
-                            abs.setData(par);
-                            abs.drawShape(e.Graphics);
-                        }
+                        MessageBox.Show("inside loop");
+                        counter = Convert.ToInt32(value[1]);
                     }
-                    //checking cir
-                    if (store.Equals("Circle", StringComparison.OrdinalIgnoreCase))
-
+                    //loop command for rectangle 
+                    if (value[0].Equals("Rectangl", StringComparison.OrdinalIgnoreCase))
                     {
-
-                        for (int y = 0; y < counter; y++)
-                        {
-                            MessageBox.Show("inside loop");
-                            //intance of abstract class
-                            abstractShapes abs = factory.getShape("Circle");
-                            if (y == 0)
-                            {
-                                par[2] = par2[0] + radius1;
-                                par[3] = par2[1] + radius1;
-                            }
-                            else
-                            {
-                                par[2] = par[2] + radius1;
-                                par[3] = par[3] + radius1;
-                            }
-                            abs.setData(par);
-                            abs.drawShape(e.Graphics);
-                        }
-                    }
-                    //checking for tri
-                    if (store.Equals("Triangle", StringComparison.OrdinalIgnoreCase))
-
-                    {
-
-                        for (int y = 0; y < counter; y++)
-                        {
-                            MessageBox.Show("inside loop");
-                            //intance of abstract class
-                            abstractShapes abs = factory.getShape("Triangle");
-                            if (y == 0)
-                            {
-                                rap[2] = par3[0] + p;
-                                rap[3] = par3[1] + p;
-                                rap[4] = par3[2] + h;
-                                rap[5] = par3[3] + h;
-                            }
-                            else
-                            {
-                                rap[2] = rap[2] + p;
-                                rap[3] = rap[3] + p;
-                                rap[4] = rap[4] + h;
-                                rap[5] = rap[5] + h;
-                            }
-                            abs.setData(rap);
-                            abs.drawShape(e.Graphics);
-                        }
+                        MessageBox.Show("inside rec");
+                        store = "Rectangle";
+                        par2[0] = Convert.ToInt32(value[1]);
+                        par2[1] = Convert.ToInt32(value[2]);
                     }
 
-                }
-
-                //end
-
-                //start
-                //for if command
-
-                if (value[0].Equals("if"))
-                {
-
-                    if (counter == Convert.ToInt32(value[3]))
+                    //loop command for circle
+                    if (value[0].Equals("circl", StringComparison.OrdinalIgnoreCase))
                     {
-                        if (value[5].Equals("radius", StringComparison.OrdinalIgnoreCase))
-                        {
-                            radius1 = Convert.ToInt32(value[7]);
-                            MessageBox.Show("r:" + radius1);
-                        }
+                        MessageBox.Show("inside cir");
+                        store = "Circle";
+                        par2[0] = Convert.ToInt32(value[1]);
+                        par2[1] = Convert.ToInt32(value[2]);
 
-                        if (value[5].Equals("width", StringComparison.OrdinalIgnoreCase))
-                        {
-                            width = Convert.ToInt32(value[7]);
-                            MessageBox.Show("width:" + width);
-                        }
-
-                        if (value[5].Equals("height", StringComparison.OrdinalIgnoreCase))
-                        {
-                            height = Convert.ToInt32(value[7]);
-                            MessageBox.Show("height:" + height);
-                        }
                     }
-                }
+                    //loop command for triangle
+                    if (value[0].Equals("triangl", StringComparison.OrdinalIgnoreCase))
+                    {
+                        MessageBox.Show("inside tri");
+                        store = "Triangle";
+                        par3[0] = Convert.ToInt32(value[1]);
+                        par3[1] = Convert.ToInt32(value[2]);
+                        par3[2] = Convert.ToInt32(value[3]);
+                        par3[3] = Convert.ToInt32(value[4]);
+
+                    }
+                    //collecting width
+                    if (value[0].Equals("width", StringComparison.OrdinalIgnoreCase))
+                    {
+                        width = Convert.ToInt32(value[2]);
+                        MessageBox.Show("width:" + width);
+                    }
+                    //collecting height
+                    if (value[0].Equals("height", StringComparison.OrdinalIgnoreCase))
+                    {
+                        height = Convert.ToInt32(value[2]);
+                        MessageBox.Show("height:" + height);
+                    }
+                    //collecting radius
+                    if (value[0].Equals("radius", StringComparison.OrdinalIgnoreCase))
+                    {
+                        radius1 = Convert.ToInt32(value[2]);
+                        MessageBox.Show("radius:" + radius1);
+                    }
+                    //collecting base 
+                    if (value[0].Equals("p", StringComparison.OrdinalIgnoreCase))
+                    {
+                        p = Convert.ToInt32(value[2]);
+                        MessageBox.Show("p:" + p);
+                    }
+                    //collecting hypotenuse 
+                    if (value[0].Equals("h", StringComparison.OrdinalIgnoreCase))
+                    {
+                        h = Convert.ToInt32(value[2]);
+                        MessageBox.Show("h:" + h);
+                    }
 
 
-                //emd
-
-                int ifcounter = 0;
-                //start
-                //if full  command
-                if (value[0].Equals("IF"))
-                {
-                    ifcounter = Convert.ToInt32(value[3]);
-                }
-
-                if (value[0].Equals("endIf", StringComparison.OrdinalIgnoreCase))
-                {
-                    if (counter == ifcounter)
+                    //endloop
+                    if (value[0].Equals("endloop", StringComparison.OrdinalIgnoreCase))
                     {
                         //checking rec
                         if (store.Equals("Rectangle", StringComparison.OrdinalIgnoreCase))
@@ -1047,19 +935,16 @@ namespace ShapeInterface
                                 {
                                     par[2] = par2[0] + width;
                                     par[3] = par2[1] + height;
-
                                 }
                                 else
                                 {
                                     par[2] = par[2] + width;
                                     par[3] = par[3] + height;
-
                                 }
                                 abs.setData(par);
                                 abs.drawShape(e.Graphics);
                             }
                         }
-
                         //checking cir
                         if (store.Equals("Circle", StringComparison.OrdinalIgnoreCase))
 
@@ -1084,22 +969,155 @@ namespace ShapeInterface
                                 abs.drawShape(e.Graphics);
                             }
                         }
+                        //checking for tri
+                        if (store.Equals("Triangle", StringComparison.OrdinalIgnoreCase))
+
+                        {
+
+                            for (int y = 0; y < counter; y++)
+                            {
+                                MessageBox.Show("inside loop");
+                                //intance of abstract class
+                                abstractShapes abs = factory.getShape("Triangle");
+                                if (y == 0)
+                                {
+                                    rap[2] = par3[0] + p;
+                                    rap[3] = par3[1] + p;
+                                    rap[4] = par3[2] + h;
+                                    rap[5] = par3[3] + h;
+                                }
+                                else
+                                {
+                                    rap[2] = rap[2] + p;
+                                    rap[3] = rap[3] + p;
+                                    rap[4] = rap[4] + h;
+                                    rap[5] = rap[5] + h;
+                                }
+                                abs.setData(rap);
+                                abs.drawShape(e.Graphics);
+                            }
+                        }
 
                     }
-                }
 
-                //end
+                    //end
+
+                    //start
+                    //for if command
+
+                    if (value[0].Equals("if"))
+                    {
+
+                        if (counter == Convert.ToInt32(value[3]))
+                        {
+                            if (value[5].Equals("radius", StringComparison.OrdinalIgnoreCase))
+                            {
+                                radius1 = Convert.ToInt32(value[7]);
+                                MessageBox.Show("r:" + radius1);
+                            }
+
+                            if (value[5].Equals("width", StringComparison.OrdinalIgnoreCase))
+                            {
+                                width = Convert.ToInt32(value[7]);
+                                MessageBox.Show("width:" + width);
+                            }
+
+                            if (value[5].Equals("height", StringComparison.OrdinalIgnoreCase))
+                            {
+                                height = Convert.ToInt32(value[7]);
+                                MessageBox.Show("height:" + height);
+                            }
+                        }
+                    }
+
+
+                    //emd
+
+                    int ifcounter = 0;
+                    //start
+                    //if full  command
+                    if (value[0].Equals("IF"))
+                    {
+                        ifcounter = Convert.ToInt32(value[3]);
+                    }
+
+                    if (value[0].Equals("endIf", StringComparison.OrdinalIgnoreCase))
+                    {
+                        if (counter == ifcounter)
+                        {
+                            //checking rec
+                            if (store.Equals("Rectangle", StringComparison.OrdinalIgnoreCase))
+
+                            {
+
+                                for (int y = 0; y < counter; y++)
+                                {
+                                    MessageBox.Show("inside loop");
+                                    //intance of abstract class
+                                    abstractShapes abs = factory.getShape("Rectangle");
+                                    if (y == 0)
+                                    {
+                                        par[2] = par2[0] + width;
+                                        par[3] = par2[1] + height;
+
+                                    }
+                                    else
+                                    {
+                                        par[2] = par[2] + width;
+                                        par[3] = par[3] + height;
+
+                                    }
+                                    abs.setData(par);
+                                    abs.drawShape(e.Graphics);
+                                }
+                            }
+
+                            //checking cir
+                            if (store.Equals("Circle", StringComparison.OrdinalIgnoreCase))
+
+                            {
+
+                                for (int y = 0; y < counter; y++)
+                                {
+                                    MessageBox.Show("inside loop");
+                                    //intance of abstract class
+                                    abstractShapes abs = factory.getShape("Circle");
+                                    if (y == 0)
+                                    {
+                                        par[2] = par2[0] + radius1;
+                                        par[3] = par2[1] + radius1;
+                                    }
+                                    else
+                                    {
+                                        par[2] = par[2] + radius1;
+                                        par[3] = par[3] + radius1;
+                                    }
+                                    abs.setData(par);
+                                    abs.drawShape(e.Graphics);
+                                }
+                            }
+
+                        }
+                    }
+
+                    //end
+
+                }
+                else
+                {
+                    throw new errorCatch();
+                }
 
             }
         }
+            private void button1_Click_2(object sender, EventArgs e)
+            {
+                edit.Clear();
+               
 
-        private void button1_Click_2(object sender, EventArgs e)
-        {
-            edit.Clear();
+            }
         }
     }
-}
-
 
 
 
