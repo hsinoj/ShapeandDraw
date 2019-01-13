@@ -4,7 +4,30 @@ FOR BASIC COMMAND
 DrawTo x,y 
 Circle <radius>
 Rectangle <width>, <height>
-Triangle <base>, <adj>, <hyp>
+Triangle <base>, <adj>, <hyp>,<base>, <adj>, <hyp>
+Polygon  <base>, <adj>, <hyp>,<base>, <adj>, <hyp>,<base>, <adj>
+
+//if single lne
+loop n
+drawto x y
+circl radius
+if counter = n then radius + size
+endloop;
+
+//if block
+Loop n 
+drawto x y
+circl radius
+IF counter = 4
+radius + 10
+Endif
+endloop
+
+//repeat
+drawto 33 44
+rectangle 44 55
+repeat 4 rectangle + 4
+
 
 
 THANK YOU FOR USING APPLICATION

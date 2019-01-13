@@ -25,8 +25,8 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DocumentationFile>
-    </DocumentationFile>
+    <DocumentationFile>bin\Debug\ShapeInterface.xml</DocumentationFile>
+    <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -38,6 +38,7 @@
     <WarningLevel>4</WarningLevel>
     <DocumentationFile>
     </DocumentationFile>
+    <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="nunit.framework, Version=3.11.0.0, Culture=neutral, PublicKeyToken=2638cd05610744eb, processorArchitecture=MSIL">
@@ -57,14 +58,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="abstractShapes.cs" />
-    <Compile Include="additionalFeature.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="additionalFeature.Designer.cs">
-      <DependentUpon>additionalFeature.cs</DependentUpon>
-    </Compile>
     <Compile Include="drawFactory.cs" />
     <Compile Include="errorCatch.cs" />
+    <Compile Include="Feature.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Feature.Designer.cs">
+      <DependentUpon>Feature.cs</DependentUpon>
+    </Compile>
     <Compile Include="shapeCircle.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
@@ -80,14 +81,15 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="shapeLine.cs" />
     <Compile Include="shapePolygon.cs" />
     <Compile Include="shapeRectangle.cs" />
     <Compile Include="Shapes.cs" />
     <Compile Include="shapeTriangle.cs" />
     <Compile Include="shapeTexture.cs" />
     <Compile Include="testShape.cs" />
-    <EmbeddedResource Include="additionalFeature.resx">
-      <DependentUpon>additionalFeature.cs</DependentUpon>
+    <EmbeddedResource Include="Feature.resx">
+      <DependentUpon>Feature.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>

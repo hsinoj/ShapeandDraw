@@ -34,11 +34,11 @@ namespace ShapeInterface
         /// parameter are enlisted in array format
         /// this is used for same variable
         /// </summary>
-        /// <param name="list">variable is instantiate so every value can pass thorugh it</param>
+        /// <param name="lists">variable is instantiate so every value can pass thorugh it</param>
         public override void setData(int[] lists)
         {
             //throw new NotImplementedException();
-            throw new NotImplementedException();
+            
             if (check(lists) == 4)
             {
                 ax = lists[0];

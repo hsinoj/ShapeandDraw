@@ -14,7 +14,7 @@ namespace ShapeInterface
         int y;
         int length;
         int breadth;
-        int deg;
+  
 
 
         /// <summary>
@@ -27,7 +27,6 @@ namespace ShapeInterface
            // throw new NotImplementedException();
             Pen p = new Pen(Color.Red,2); //to create borer
 
-            g.RotateTransform(deg);
             g.DrawRectangle(p, x, y, length, breadth); //rectanlge is created
 
         }
@@ -39,13 +38,13 @@ namespace ShapeInterface
         /// <param name="list">variable is instantiate so every value can pass thorugh it</param>
         public override void setData(int[] list)
         {
-            if (check(list) == 5)
+            if (check(list) == 4)
             {
                 x = list[0]; //value associating and instantiate
                 y = list[1];
                 this.length = list[2];
                 this.breadth = list[3];
-                deg = list[4];
+            
             }
             //  throw new NotImplementedException();
             

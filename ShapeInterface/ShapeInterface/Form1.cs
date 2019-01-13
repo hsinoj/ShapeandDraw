@@ -10,9 +10,14 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace ShapeInterface
-{
+{/// <summary>
+/// 
+/// </summary>
     public partial class Form1 : Form
     {
+        /// <summary>
+        /// 
+        /// </summary>
         public Form1()
         {
             InitializeComponent();
@@ -82,6 +87,13 @@ namespace ShapeInterface
         private void button3_Click(object sender, EventArgs e)
         {
             Application.Exit();
+        }
+
+        private void button3_Click_1(object sender, EventArgs e)
+        {
+            Feature f = new Feature();
+            f.Show();
+            Visible = false;
         }
     }
 }

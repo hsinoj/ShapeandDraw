@@ -197,6 +197,9 @@
         private System.Windows.Forms.Button run;
         private System.Windows.Forms.Button exit;
         private System.Windows.Forms.Panel panel1;
+        /// <summary>
+        /// 
+        /// </summary>
         public System.Windows.Forms.RichTextBox edit;
         private System.Windows.Forms.Button help;
         private System.Windows.Forms.Button button1;

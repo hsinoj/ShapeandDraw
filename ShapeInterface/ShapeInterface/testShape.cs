@@ -12,16 +12,17 @@ namespace ShapeInterface
     {
         shapeRectangle r = new shapeRectangle();
         [TestCase]
-        public void checkClass()
+       
+        public void CheckClass()
 
         {
-            int[] a = { 1, 2, 3, 4, 5 };
+            int[] a = { 1, 2, 3, 4 };
             Assert.AreEqual(5, r.check(a));
         }
         
         shapeTriangle st = new shapeTriangle();
         [TestCase]
-        public void checkClas()
+        public void CheckClas()
 
         {
             int[] b = { 1, 2, 3, 4, 5, 6 };
@@ -30,7 +31,7 @@ namespace ShapeInterface
 
         shapeCircle sc = new shapeCircle();
         [TestCase]
-        public void checkcla()
+        public void Checkcla()
         {
             int[] c = {1,2,3,4};
             Assert.AreEqual(4, sc.check(c));

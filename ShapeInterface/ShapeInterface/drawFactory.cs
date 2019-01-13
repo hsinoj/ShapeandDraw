@@ -45,6 +45,10 @@ namespace ShapeInterface
             {
                 return new shapeTexture();//creating instane of texture
             }
+            else if (drawType.Equals("Line", StringComparison.OrdinalIgnoreCase))
+            {
+                return new shapeLine();//creating instane of line
+            }
             else
             {
                     //if we get here then what has been passed in is unknown so throw an appropriate exception

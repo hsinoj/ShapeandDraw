@@ -33,6 +33,7 @@
             this.button2 = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.exitp = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -50,7 +51,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(128, 126);
+            this.button1.Location = new System.Drawing.Point(128, 110);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(125, 24);
             this.button1.TabIndex = 1;
@@ -60,7 +61,7 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(128, 156);
+            this.button2.Location = new System.Drawing.Point(128, 140);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(125, 24);
             this.button2.TabIndex = 2;
@@ -82,7 +83,7 @@
             // 
             // exitp
             // 
-            this.exitp.Location = new System.Drawing.Point(128, 185);
+            this.exitp.Location = new System.Drawing.Point(128, 199);
             this.exitp.Name = "exitp";
             this.exitp.Size = new System.Drawing.Size(125, 24);
             this.exitp.TabIndex = 4;
@@ -90,12 +91,23 @@
             this.exitp.UseVisualStyleBackColor = true;
             this.exitp.Click += new System.EventHandler(this.button3_Click);
             // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(128, 170);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(125, 23);
+            this.button3.TabIndex = 5;
+            this.button3.Text = "New Paint";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click_1);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Teal;
             this.ClientSize = new System.Drawing.Size(395, 240);
+            this.Controls.Add(this.button3);
             this.Controls.Add(this.exitp);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.button2);
@@ -119,6 +131,7 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Button exitp;
+        private System.Windows.Forms.Button button3;
     }
 }
 

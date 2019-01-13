@@ -13,18 +13,21 @@ namespace ShapeInterface
         int y;
         int length;
         int breadth;
-
+        /// <summary>
+        /// bitmap for image reading
+        /// textbrush for brush
+        /// rectangle drawing
+        /// </summary>
+        /// <param name="g"></param>
         public override void drawShape(Graphics g)
         {
-          
-                Bitmap bitmap = new Bitmap("E:/study/ShapeandDraw/ShapeInterface/ShapeInterface/Resources/lace.png");
-                TextureBrush tBrush = new TextureBrush(bitmap);
-                Pen texturedPen = new Pen(tBrush);
-                Rectangle r = new Rectangle(x, y, length, breadth);
-                g.DrawEllipse(texturedPen, r);
-           
-           
-
+            
+            Bitmap image1 = (Bitmap)Image.FromFile(@"E:\study\ShapeandDraw\ShapeInterface\ShapeInterface\Resources\lace.bmp", true);
+            TextureBrush tBrush = new TextureBrush(image1);
+            Pen texturedPen = new Pen(Color.Red);
+            Rectangle r = new Rectangle(x, y, length, breadth);
+            g.FillEllipse(tBrush, x, y, length, breadth);
+            g.DrawEllipse(texturedPen,r);
         }
     
 
