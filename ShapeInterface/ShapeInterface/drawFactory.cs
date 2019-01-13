@@ -20,7 +20,8 @@ namespace ShapeInterface
       /// <returns></returns>
         public abstractShapes getShape(String drawType)
         {
-           drawType = drawType.Trim();
+
+            drawType = drawType.ToUpper().Trim();
 
             if (drawType.Equals("CIRCLE", StringComparison.OrdinalIgnoreCase)) 
             {
@@ -40,18 +41,17 @@ namespace ShapeInterface
             {
                 return new shapePolygon(); //creating instance of polygon
             }
+            else if(drawType.Equals("TEXTURE", StringComparison.OrdinalIgnoreCase))
+            {
+                return new shapeTexture();//creating instane of texture
+            }
             else
             {
-               
                     //if we get here then what has been passed in is unknown so throw an appropriate exception
-                    System.ArgumentException argEx = new System.ArgumentException("Factory error: " + drawType + " shapes are not exist ");
+                    System.ArgumentException argEx = new System.ArgumentException("Factory error:  shapes are not exist ");
                     throw argEx;
-                
-                
             }
-
-
-
         }
+
     }
 }

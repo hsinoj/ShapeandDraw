@@ -25,7 +25,7 @@ namespace ShapeInterface
         {
             // throw new NotImplementedException();
             Pen p = new Pen(Color.Black, 2);//circle border is drawn
-            
+
             g.DrawEllipse(p, ax, ay, radius1, radius2);//circle is drawn
 
         }
@@ -38,10 +38,21 @@ namespace ShapeInterface
         public override void setData(int[] lists)
         {
             //throw new NotImplementedException();
-            ax = lists[0];
-            ay = lists[1];
-            this.radius1 = lists[2];
-            this.radius2 = lists[3];
+            throw new NotImplementedException();
+            if (check(lists) == 4)
+            {
+                ax = lists[0];
+                ay = lists[1];
+                this.radius1 = lists[2];
+                this.radius2 = lists[3];
+            }
+
         }
+        public int check(int[] a)
+        {
+            return a.Length;
+        }
+
     }
-}
+}   
+

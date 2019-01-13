@@ -44,12 +44,19 @@ namespace ShapeInterface
         public override void setData(int[] list)
         {
             //throw new NotImplementedException();
-             p1 = list[0];
-             p2 = list[1];
-             p3 = list[2];
-             p4 = list[3];
-             p5 = list[4];
-             p6 = list[5];
+            if (check(list) == 6)
+            {
+                p1 = list[0];
+                p2 = list[1];
+                p3 = list[2];
+                p4 = list[3];
+                p5 = list[4];
+                p6 = list[5];
+            }  
+        }
+        public int check(int[] a)
+        {
+            return a.Length;
         }
     }
 }

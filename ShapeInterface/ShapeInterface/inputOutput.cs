@@ -152,9 +152,10 @@ namespace ShapeInterface
 
         }
         //intiliazing array with diffeent index property
-        public int[] par = new int[4];
+        public int[] par = new int[5];
         public int[] rap = new int[6];
         public int[] cab = new int[17];
+       // public int[] arp = new int[4];
 
 
         /// <summary>
@@ -172,7 +173,7 @@ namespace ShapeInterface
         {
 
             //spliting string with different escape sequence;
-
+   
 
 
             for (int i = 0; i < edit.Lines.Length - 1; i++)//counting length of program
@@ -186,7 +187,7 @@ namespace ShapeInterface
                       || value[0].Equals("Triangle", StringComparison.OrdinalIgnoreCase) || value[0].Equals("Rectangle", StringComparison.OrdinalIgnoreCase)
                       || value[0].Equals("Circle", StringComparison.OrdinalIgnoreCase)   || value[0].Equals("Polygon", StringComparison.OrdinalIgnoreCase)
                       || value[0].Equals("Loop", StringComparison.OrdinalIgnoreCase)  
-                      || value[0].Equals("IF")
+                      || value[0].Equals("IF")                                           || value[0].Equals("Texture", StringComparison.OrdinalIgnoreCase)
                       || value[0].Equals("width", StringComparison.OrdinalIgnoreCase)    || value[0].Equals("height", StringComparison.OrdinalIgnoreCase) 
                       || value[0].Equals("endloop", StringComparison.OrdinalIgnoreCase)  || value[0].Equals("circl", StringComparison.OrdinalIgnoreCase)
                       || value[0].Equals("radius", StringComparison.OrdinalIgnoreCase)   || value[0].Equals("triangl", StringComparison.OrdinalIgnoreCase)
@@ -198,6 +199,9 @@ namespace ShapeInterface
 
                     if (value[0].Equals("DrawTo", StringComparison.OrdinalIgnoreCase))  //parsing the command
                     {
+                        
+                        
+
                         //rectangle
                         /**
                          * hcreating rectangle
@@ -334,24 +338,27 @@ namespace ShapeInterface
                         {
                             par[2] = Convert.ToInt32(hashtable[value[1]]);
                             par[3] = Convert.ToInt32(hashtable[value[2]]);
+                            par[4] = Convert.ToInt32(hashtable[value[3]]);
                         }
 
                         catch
                         {
                             par[2] = Convert.ToInt32(value[1]);
                             par[3] = Convert.ToInt32(value[2]);
-
+                            par[4] = Convert.ToInt32(value[3]);
                         }
 
                         try
                         {
                             par[2] = Convert.ToInt32(value[1]);
                             par[3] = Convert.ToInt32(value[2]);
+                            par[4] = Convert.ToInt32(value[3]);
                         }
                         catch
                         {
                             par[2] = Convert.ToInt32(hashtable[value[1]]);
                             par[3] = Convert.ToInt32(hashtable[value[2]]);
+                            par[4] = Convert.ToInt32(hashtable[value[3]]);
                         }
 
 
@@ -396,12 +403,14 @@ namespace ShapeInterface
                         {
                             par[2] = Convert.ToInt32(hashtable[value[1]]);
                             par[3] = Convert.ToInt32(hashtable[value[2]]);
+                            par[4] = Convert.ToInt32(hashtable[value[3]]);
                         }
 
                         catch
                         {
                             par[2] = Convert.ToInt32(value[1]);
                             par[3] = Convert.ToInt32(value[2]);
+                            par[4] = Convert.ToInt32(value[3]);
 
                         }
 
@@ -409,11 +418,13 @@ namespace ShapeInterface
                         {
                             par[2] = Convert.ToInt32(value[1]);
                             par[3] = Convert.ToInt32(value[2]);
+                            par[4] = Convert.ToInt32(value[3]);
                         }
                         catch
                         {
                             par[2] = Convert.ToInt32(hashtable[value[1]]);
                             par[3] = Convert.ToInt32(hashtable[value[2]]);
+                            par[4] = Convert.ToInt32(hashtable[value[3]]);
                         }
                         ba.setData(par);
                         ba.drawShape(e.Graphics);
@@ -586,6 +597,65 @@ namespace ShapeInterface
                             }
                         }
                     }
+
+
+                    if (value[0].Equals("Texture", StringComparison.OrdinalIgnoreCase))//checking the command
+                    {
+                        abstractShapes ab = factory.getShape("Rectangle");
+                        try
+                        {
+                            par[2] = Convert.ToInt32(hashtable[value[1]]);
+                            par[3] = Convert.ToInt32(hashtable[value[2]]);
+                        }
+
+                        catch
+                        {
+                            par[2] = Convert.ToInt32(value[1]);
+                            par[3] = Convert.ToInt32(value[2]);
+
+                        }
+
+                        try
+                        {
+                            par[2] = Convert.ToInt32(value[1]);
+                            par[3] = Convert.ToInt32(value[2]);
+                        }
+                        catch
+                        {
+                            par[2] = Convert.ToInt32(hashtable[value[1]]);
+                            par[3] = Convert.ToInt32(hashtable[value[2]]);
+                        }
+
+
+
+                        ab.setData(par);
+                        ab.drawShape(e.Graphics);
+                    }
+
+                    else if (value[0].Equals("var"))
+                    {
+                        if (value[2].Equals("=") == true && value[4].Equals(";") == true)
+                        {
+                            string res = checkResult(line, i);
+                            
+                            int From1 = line[i].IndexOf("=") + "=".Length;
+                            int To1 = line[i].LastIndexOf(";");
+
+                            int res1 = Int32.Parse(line[i].Substring(From1, To1 - From1).Replace(" ", String.Empty));
+                            try
+                            {
+                                hashtable.Add(res, res1);
+                            }
+                            catch (Exception x)
+                            {
+                                hashtable[res] = res1;
+                            }
+                        }
+                    }
+
+
+
+
 
                     if (value[0].Equals("Repeat", StringComparison.OrdinalIgnoreCase) || value[0].Equals("Loop", StringComparison.OrdinalIgnoreCase))
                     {
@@ -1110,7 +1180,15 @@ namespace ShapeInterface
 
             }
         }
-            private void button1_Click_2(object sender, EventArgs e)
+        public string checkResult(string[] line,int i)
+        {
+            int From = line[i].IndexOf("var") + "var".Length; //chcking the var positon
+            int To = line[i].LastIndexOf("="); //checking = sign position
+
+            return line[i].Substring(From, To - From).Replace(" ", String.Empty); //extract the long string 
+
+        }
+        private void button1_Click_2(object sender, EventArgs e)
             {
                 edit.Clear();
                
